@@ -1,2 +1,2 @@
-# rest-api
-練習。httpsでcsvをアップロードして、rest-apiで処理。
+# fastapi
+練習。httpsでcsvをアップロードして、fastapiで処理。
