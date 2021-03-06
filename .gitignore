@@ -4,3 +4,4 @@ __pycache__
 .ipynb_checkpoints
 
 /toy_experiment/toy_dataset/
+/toy_experiment/toy_download/
