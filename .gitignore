@@ -1,3 +1,6 @@
 /env/
 
+__pycache__
+.ipynb_checkpoints
+
 /toy_experiment/toy_dataset/
