@@ -1,7 +1,15 @@
-from pathlib import Path
-from subprocess import Popen
+import requests
+from tqdm import tqdm
+def uploader(url,
+             upload_csvs
+             ):
 
-upload_csv_dir = Path("toy_dataset")
+    upload_file = {}
+    output_json = {}
+    for f in tqdm(upload_csvs):
+        with open(f, "rb") as f:
+            upload_file["file"] = f.read()
 
-for upload_csv in upload_csv_dir.glob("*.csv"):
-    Popen(f'curl -X POST "http://127.0.0.1:80/processing-add/" -H  "accept: application/json" -H  "Content-Type: multipart/form-data" -F "file=@{upload_csv.as_posix()}.csv" -o "/toy_download/{upload_csv.name[:-4]}_add_x_plus_y.json"')
+        res = requests.post(url, files=upload_file)
+        output_json[f.name] = res.json()
+    return output_json
